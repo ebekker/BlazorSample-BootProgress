@@ -8,28 +8,46 @@
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/spinkit-fading-circle.css" rel="stylesheet" />
     <link href="css/site.css" rel="stylesheet" />
+    <style>
+        .bootprogress {
+            margin: auto;
+            width: 70%;
+        }
+        .bootprogress #bootMessageBox {
+            border: solid 1px #ddd;
+            padding: 3px;
+        }
+    </style>
 </head>
 <body>
     <app>
 
-        <!-- SpinKit - Fading Circle:  https://tobiasahlin.com/spinkit/ -->
-        <div class="sk-fading-circle">
-            <div class="sk-circle1 sk-circle"></div>
-            <div class="sk-circle2 sk-circle"></div>
-            <div class="sk-circle3 sk-circle"></div>
-            <div class="sk-circle4 sk-circle"></div>
-            <div class="sk-circle5 sk-circle"></div>
-            <div class="sk-circle6 sk-circle"></div>
-            <div class="sk-circle7 sk-circle"></div>
-            <div class="sk-circle8 sk-circle"></div>
-            <div class="sk-circle9 sk-circle"></div>
-            <div class="sk-circle10 sk-circle"></div>
-            <div class="sk-circle11 sk-circle"></div>
-            <div class="sk-circle12 sk-circle"></div>
-          </div>
+        <div class="bootprogress">
+            <!-- SpinKit - Fading Circle:  https://tobiasahlin.com/spinkit/ -->
+            <div class="sk-fading-circle">
+                <div class="sk-circle1 sk-circle"></div>
+                <div class="sk-circle2 sk-circle"></div>
+                <div class="sk-circle3 sk-circle"></div>
+                <div class="sk-circle4 sk-circle"></div>
+                <div class="sk-circle5 sk-circle"></div>
+                <div class="sk-circle6 sk-circle"></div>
+                <div class="sk-circle7 sk-circle"></div>
+                <div class="sk-circle8 sk-circle"></div>
+                <div class="sk-circle9 sk-circle"></div>
+                <div class="sk-circle10 sk-circle"></div>
+                <div class="sk-circle11 sk-circle"></div>
+                <div class="sk-circle12 sk-circle"></div>
+            </div>
+
+            <div id="bootMessageBox">
+                <span id="bootMessage">Loading application...</span>
+            </div>
+
+        </div>
 
     </app>
 
+    <script src="js/blazor-boot-progress.js"></script>
     <script src="_framework/blazor.webassembly.js"></script>
 </body>
 </html>
