@@ -46,3 +46,20 @@ XMLHttpRequest.prototype.open = function (method, url, async) {
     }
     this.orig_open(method, url, async);
 }
+
+// Artificial progressive delay for dev/test
+window.blazor_boot_sendDelay = 1;
+XMLHttpRequest.prototype.orig_send = XMLHttpRequest.prototype.send;
+XMLHttpRequest.prototype.send = function () {
+    if (this.is_dll && window.blazor_boot_sendDelay > 0) {
+        if (window.blazor_boot_sendDelay > 20)
+            return;
+
+        setTimeout(function (xhr) {
+            xhr.orig_send();
+        }, ++window.blazor_boot_sendDelay * 200, this);
+    }
+    else { 
+        xhr.orig_send();
+    }
+}
