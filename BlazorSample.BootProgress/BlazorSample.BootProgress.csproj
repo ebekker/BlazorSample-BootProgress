@@ -12,4 +12,28 @@
     <PackageReference Include="Microsoft.AspNetCore.Blazor.DevServer" Version="3.0.0-preview6.19307.2" PrivateAssets="all" />
   </ItemGroup>
 
+  <!-- Called after:
+          https://github.com/aspnet/AspNetCore/blob/master/src/Components/Blazor/Build/src/targets/Blazor.MonoRuntime.targets#L4
+    -->
+  <Target Name="RenameBlazorClientAssemblies"
+      AfterTargets="_BlazorCopyFilesToOutputDirectory">
+    <ItemGroup>
+      <BlazorDistAllFiles Include="@(BlazorItemOutput->'%(TargetOutputPath)')" />
+      <BlazorDistDllFiles Include="@(BlazorDistAllFiles->WithMetadataValue('Extension','.dll'))" />
+    </ItemGroup>
+    
+    <Move SourceFiles="%(BlazorDistDllFiles.FullPath)" DestinationFiles="%(RelativeDir)%(Filename).blzr.wasm" />
+    <Message Importance="High" Text="Published Client Assemblies renamed (*.dll -&gt; *.blzr.wasm)"/>
+  </Target>
+
+  <Target Name="CleanRenamedBlazorClientAssemblies"
+      BeforeTargets="CoreClean">
+    <ItemGroup>
+      <BlazorDistBlzrFiles Include="$(OutputPath)**\*.blzr.wasm" />
+    </ItemGroup>
+    <Delete Files="@(BlazorDistBlzrFiles)" />
+    <Message Importance="High" Text="Renamed Client Assemblies deleted (*.blzr.wasm)"/>
+
+  </Target>
+
 </Project>
