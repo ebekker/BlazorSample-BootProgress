@@ -63,9 +63,10 @@ XMLHttpRequest.prototype.open = function (method, url, async) {
 
 
 // Artificial progressive delay and abort for dev/test
+//   (defaults to on with 100ms delay)
 window.blazor_boot_xhr_send_delay_count = 1;
 window.blazor_boot_xhr_send_abort_count =  urlParams.has("xhr_send_abort_count")
-? parseInt(urlParams.get("xhr_send_abort_count")) : 0;
+? parseInt(urlParams.get("xhr_send_abort_count")) : 100;
 window.blazor_boot_xhr_send_delay_factor = urlParams.has("xhr_send_delay_factor")
     ? parseInt(urlParams.get("xhr_send_delay_factor")) : 0;
 
