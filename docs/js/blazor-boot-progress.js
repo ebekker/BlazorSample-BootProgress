@@ -66,9 +66,9 @@ XMLHttpRequest.prototype.open = function (method, url, async) {
 //   (defaults to on with 100ms delay)
 window.blazor_boot_xhr_send_delay_count = 1;
 window.blazor_boot_xhr_send_abort_count =  urlParams.has("xhr_send_abort_count")
-? parseInt(urlParams.get("xhr_send_abort_count")) : 100;
+? parseInt(urlParams.get("xhr_send_abort_count")) : 0;
 window.blazor_boot_xhr_send_delay_factor = urlParams.has("xhr_send_delay_factor")
-    ? parseInt(urlParams.get("xhr_send_delay_factor")) : 0;
+    ? parseInt(urlParams.get("xhr_send_delay_factor")) : 100;
 
 if (window.blazor_boot_xhr_send_delay_factor) {
     XMLHttpRequest.prototype.orig_send = XMLHttpRequest.prototype.send;
