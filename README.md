@@ -7,7 +7,11 @@ Sample of client-side Blazor with an improved boot up sequence
 This Blazor sample shows how to improve the screen shown during "boot up" of a client-side Blazor
 application to provide more pleasant user experience with more user feedback about its progress.
 
-You can see this example running [here](http://bootprogress.blazorsample.bkkr.us).
+You can see this example running here:
+
+* http://bootprogress.blazorsample.bkkr.us.
+
+<img src="sample.png" width="800" />
 
 The sample builds on various other contributions.  For starters, we add a small progress animation
 based on [SpinKit](https://tobiasahlin.com/spinkit/) to improve the aesthetics.
